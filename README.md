@@ -74,8 +74,33 @@ o	Cathode (–) of LED: Connect to GND on the Arduino.
 2.	Save the Circuit: Click “Save” at the top of the screen to store your design and code for future use.
 
 ## PROGRAM
+```py
+const int pirPin = 2;    // PIR sensor output
+const int ledPin = 8;    // LED pin
+
+void setup() {
+  pinMode(pirPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int motion = digitalRead(pirPin);
+
+  if (motion == HIGH) {
+    digitalWrite(ledPin, HIGH);
+    Serial.println("Motion Detected!");
+  } else {
+    digitalWrite(ledPin, LOW);
+    Serial.println("No Motion");
+  }
+
+  delay(100);
+}
+```
 ## OUTPUT 
 
+<img width="1600" height="999" alt="WhatsApp Image 2026-08-19 at 2 04 24 PM" src="https://github.com/user-attachments/assets/bb6b3996-3e40-4ed3-bb38-932773e188bf" />
 
 ## Result:
 The PIR sensor successfully detected motion and triggered the Arduino to turn ON the built-in LED. The LED remained OFF when no motion was present, confirming correct circuit and code functionality.
